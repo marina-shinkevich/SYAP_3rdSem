@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("Задание 1")
+
+        function makeCounter() {
+  let currentCount = 1;
+
+  return function() { // (*)
+    return currentCount++;
+  };
+}
+let counter = makeCounter();
+console.log(counter()); 
+console.log(counter()); 
+console.log(counter()); 
+let counter2 = makeCounter();
+console.log(counter2()); 
+
+
+ //var 2
+ let currentCountv2 = 1;
+
+function makeCounterv2() {
+    return function () {
+        return currentCountv2++;
+    };
+}
+
+let counterv2 = makeCounterv2();
+let counter2v2 = makeCounterv2();
+
+console.log(counterv2());
+console.log(counterv2());
+console.log(counter2v2());
+console.log(counter2v2());
+
+        console.log("Задание 2")
+        // Каррированная функция для расчета объема прямоугольного параллелепипеда
+function calculateVolume(length) {
+  return function(width) {
+    return function(height) {
+      return length * width * height;
+    };
+  };
+}
+
+// Пример использования
+const calculateWithFixedLength = calculateVolume(10);
+
+console.log(calculateWithFixedLength(5)(8)); 
+console.log(calculateWithFixedLength(7)(6)); 
+
+
+
+console.log("Задание 3")
+
+// // Функция-генератор для расчета новых координат
+function* moveGenerator(x, y) {
+  for(let i=0; i<4; i++) {
+    const command = prompt("Введите команду (left, right, up, down):");
+    switch (command) {
+      case 'left':
+        x -= 10; 
+        break;
+      case 'right':
+        x += 10; 
+        break;
+      case 'up':
+        y += 10; 
+        break;
+      case 'down':
+        y -= 10; 
+        break;
+      default:
+        console.log("Неизвестная команда. Попробуйте снова.");
+        continue;
+    }
+    yield { x, y }; 
+  }
+}
+
+
+let x = 0;
+let y = 0;
+
+
+const mover = moveGenerator(x, y);
+
+function startMoving() {
+  while (true) {
+   
+    const newCoords = mover.next().value;
+    console.log(`Текущие координаты: X=${newCoords.x}, Y=${newCoords.y}`);
+  }
+}
+
+
+// Запуск управления движением
+startMoving();
+</script>
+
+<script>
+        console.log("Задание 4")
+
+
+        var globalVar = 10; 
+        let globalLet = 20; 
+        const globalConst = 30; 
+
+        function globalFunc() {
+            console.log('Это глобальная функция');
+        }
+
+        console.log(window.globalVar); 
+        console.log(window.globalLet);
+        console.log(window.globalConst);
+        console.log(window.globalFunc); 
+
+        window.globalVar = 100;
+        console.log(globalVar); 
+
+        window.globalFunc = function () {
+            console.log('Переопределенная глобальная функция');
+        };
+
+        globalFunc(); 
+
+        console.log(window.globalVar); 
+        console.log(window.globalFunc); 
+    </script>
+    
+</body>
+</html>

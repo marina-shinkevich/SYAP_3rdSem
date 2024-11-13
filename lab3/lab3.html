@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("Задание 1");
+        const arr = [1, [1, 2, [3, 4]], [2, 4]];
+
+
+function flattenArray(array) {
+    return array.reduce((acc, val) => 
+        acc.concat(Array.isArray(val) ? flattenArray(val) : val), []);
+}
+
+
+const flattenedArray = flattenArray(arr);
+
+console.log(flattenedArray); 
+
+console.log("Задание 2");
+
+function sumArray(arr) {
+    return arr.reduce((acc, val) => {
+        
+        if (Array.isArray(val)) {
+            return acc + sumArray(val);
+        }
+        
+        return acc + val;
+    }, 0);
+}
+
+// Пример использования
+const nestedArray = [1, [2, [3, 4], 5], 6, [7, 8]];
+const totalSum = sumArray(nestedArray);
+console.log(totalSum); 
+
+
+console.log("Задание 3");
+
+function groupStudentsByAge(students) {
+    return students.reduce((acc, student) => {
+        
+        if (student.age > 17) {
+           
+            if (!acc[student.groupId]) {
+                acc[student.groupId] = [];
+            }
+           
+            acc[student.groupId].push(student);
+        }
+        return acc;
+    }, {});
+}
+
+// Пример использования
+const studentsArray = [
+    { name: 'Alice', age: 18, groupId: 1 },
+    { name: 'Bob', age: 16, groupId: 1 },
+    { name: 'Charlie', age: 19, groupId: 2 },
+    { name: 'David', age: 20, groupId: 1 },
+    { name: 'Eve', age: 17, groupId: 2 },
+];
+
+const groupedStudents = groupStudentsByAge(studentsArray);
+console.log(groupedStudents);
+
+
+console.log("Задание 4");
+
+function processString(input) {
+    
+    const asciiCodes = input.split('').map(char => {
+        const code = char.charCodeAt(0);
+        console.log(`'${char}' = ${code}`);
+        return code;
+    });
+
+  
+    const total1 = asciiCodes.join('');
+    console.log(`--> ${total1}`);
+
+    
+    const total2 = total1.split('7').join('1');
+
+    console.log(`total1 = ${total1}, total2 = ${total2}`);
+
+    // Вычисляем разность
+    const result = total1-total2;
+    return result;
+}
+
+// Пример использования
+const inputString = 'ABC';
+const difference = processString(inputString);
+console.log(`Разность: ${difference}`); 
+
+console.log("Задание 5");
+
+function extend(obj1, obj2) {
+    return Object.assign({}, obj1, obj2);
+}
+
+// Примеры использования:
+console.log(extend({a: 1, b: 2}, {c: 3})); 
+
+
+console.log(extend(extend({a: 1, b: 2}, {c: 3}), {d: 4})); 
+
+
+console.log(extend({a: 1, b: 2}, {a: 3, c: 3})); 
+
+
+
+console.log("Задание 6");
+
+
+function createPyramid(floors) {
+    const pyramid = [];
+    
+    for (let i = 0; i < floors; i++) {
+        const spaces = ' '.repeat(floors - i - 1);
+        const stars = '*'.repeat(2 * i + 1);
+        pyramid.push(spaces + stars + spaces);
+    }
+
+    return pyramid;
+}
+
+// Пример использования:
+const tower = createPyramid(5);
+console.log(tower);
+
+
+
+    </script>
+</body>
+</html>

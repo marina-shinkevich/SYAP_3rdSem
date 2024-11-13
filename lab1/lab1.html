@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    alert("Задание 1");
+
+    let a=5;
+    let name="Name";
+    let i=0;
+    let double=0.23;
+    let result =1/0;
+    let answer=true;
+    let no=null;
+   alert(typeof a);
+   alert (typeof name);
+   alert (typeof i);
+   alert (typeof double);
+   alert (typeof result);
+   alert (typeof answer);
+   alert (typeof no);
+  </script>
+
+
+  <script>
+    alert("Задание 2");
+let width_A=45;
+let height_A=21;
+let square_B=5;
+let squares_width=Math.floor(width_A/square_B);
+let squares_height=Math.floor(height_A/square_B);
+alert(squares_width*squares_height);
+  </script>
+
+  <script>
+console.log("Задание 3");
+let I=2
+let A=++I;
+let B=I++; 
+
+
+if (A > B) {
+    console.log("A больше, чем B");
+} else if (A < B) {
+    console.log("A меньше, чем B");
+} else {
+    console.log("A равно B");
+}
+  </script>
+
+
+<script>
+console.log("Задание 4");
+
+console.log("Котик" === "котик" ? "Равны" : "не равны"); 
+console.log("Котик" === "китик" ? "Равны" : "не равны"); 
+console.log("Кот" == "Котик" ? "Равны" : "не равны"); 
+console.log("Привет" == "Пока" ? "Равны" : "не равны"); 
+console.log(73 == "53" ? "Равны" : "не равны"); 
+console.log(false == 0 ? "Равны" : "не равны"); 
+console.log(54 == true ? "Равны" : "не равны"); 
+console.log(123 == false ? "Равны" : "не равны"); 
+console.log(true == "3" ? "Равны" : "не равны"); 
+console.log(3 == "5мм" ? "Равны" : "не равны"); 
+console.log(8 == "-2" ? "Равны" : "не равны"); 
+console.log(34 == "34" ? "Равны" : "не равны"); 
+console.log(null == undefined ? "Равны" : "не равны"); 
+
+
+</script>
+
+
+<script>
+ alert("Задание 5");
+
+let teacherName_1 = "Барковский Евгений Валерьевич".toLowerCase();
+let teacherName_2 = "Белодед Николай Иванович".toLowerCase();
+let teacherName_3 = "Наркевич Аделина Сергеевна".toLowerCase();
+
+
+let userInput = prompt("Введите ваше имя").toLowerCase(); 
+
+// Проверка, содержится ли одно из имен преподавателей в введенных данных
+if (userInput.includes("евгений") || userInput.includes("николай") || userInput.includes("аделина")) {
+    alert("Введенные данные верны");
+} else {
+    alert("Данные неверны");
+}
+</script>
+<script>
+
+
+alert("Задание 6");
+
+let russian = confirm("Вы сдали экзамен по русскому языку? (ок - да, Отмена - нет)");
+let math = confirm("Вы сдали экзамен по математике? (ок - да, Отмена - нет)");
+let english = confirm("Вы сдали экзамен по английскому языку? (ок - да, Отмена - нет)");
+
+
+if (russian && math && english) {
+    alert("Вы сдали все экзамены! вас переводят на следующий курс.");
+} else if (!russian && !math && !english) {
+    alert("Вы не сдали ни одного экзамена. вас отчислят.");
+} else {
+    alert("Вы не сдали хотя бы один экзамен. вас ожидает пересдача.");
+}
+
+
+console.log("Задание 7");
+console.log(true+true);
+console.log(0+"5");
+console.log(5+"мм");
+console.log(8/Infinity);
+console.log(9*"\n9");
+console.log(null-1);
+console.log("5"-2);
+console.log("5px"-3);
+console.log(true-3);
+console.log(7||0);
+
+console.log("Задание 8");
+for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) {
+        
+        console.log(i + 2);
+    } else {
+        
+        console.log(i + 'мм');
+    }
+}
+</script> 
+
+ <script>
+alert("Задание 9")
+alert("Через объект")
+const daysOfWeek = {
+    1: 'Понедельник',
+    2: 'Вторник',
+    3: 'Среда',
+    4: 'Четверг',
+    5: 'Пятница',
+    6: 'Суббота',
+    7: 'Воскресенье'
+};
+
+let dayNumber = prompt("Введите номер дня недели (1-7):");
+
+if (dayNumber >= 1 && dayNumber <= 7) {
+    alert(`День недели: ${daysOfWeek[dayNumber]}`);
+} else {
+    alert("Неверный номер дня недели.");
+}
+
+alert("Через массив");
+
+let daysOfWeek_2 = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+
+let dayNumber_2 = prompt("Введите номер дня недели (1-7):");
+
+if (dayNumber_2 >= 1 && dayNumber_2 <= 7) {
+    alert(`День недели: ${daysOfWeek_2[dayNumber_2-1]}`);
+} else {
+    alert("Неверный номер дня недели.");
+} 
+
+</script>
+
+<script>
+
+alert("Задание 10");
+// Функция с тремя параметрами
+function create_String(param1 = 'Значение', param2, param3) {
+    return `${param1} ${param2} ${param3}`;
+}
+let userInput_1 = prompt("Введите значение для третьего параметра:");
+let result_1 = create_String(undefined,'Второй параметр', userInput_1);
+alert(result_1);
+</script>
+
+
+<script>
+
+console.log("Задание 11");
+
+// Function Declaration объявление функции
+function params(a, b) {
+    if (a === b) {
+       
+        return 4 * a; 
+    } else {
+        
+        return a * b; 
+    }
+}
+
+// Примеры вызова функции
+console.log(params(5, 5)); 
+console.log(params(5, 8)); 
+
+
+// Function Expression функциональное выражение
+let params_1 = function(a, b) {
+    if (a === b) {
+       
+        return 4 * a; 
+    } else {
+        
+        return a * b;
+    }
+};
+
+// Примеры вызова функции
+console.log(params_1(6, 6)); 
+console.log(params_1(5, 10)); 
+
+// функция стрелка
+let params_2 = (a, b) => {
+    if (a === b) {
+        
+        return 4 * a; 
+    } else {
+        
+        return a * b; 
+    }
+};
+
+// Примеры вызова функции
+console.log(params_2(10, 10)); 
+console.log(params_2(7, 8)); 
+
+</script>
+
+</body>
+</html>

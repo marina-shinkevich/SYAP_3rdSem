@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("Задание 1");
+    function basicOperation(operation, value1, value2) {
+    let result;
+
+    switch (operation) {
+        case '+':
+            result = value1 + value2;
+            break;
+        case '-':
+            result = value1 - value2;
+            break;
+        case '*':
+            result = value1 * value2;
+            break;
+        case '/':
+            if (value2 !== 0) {
+                result = value1 / value2;
+            } else {
+                return "Ошибка: деление на ноль";
+            }
+            break;
+        default:
+            return "Ошибка: не поддерживаемый оператор";
+    }
+
+    return result;
+}
+
+// Примеры использования:
+let result1 = basicOperation('+', 5, 10); 
+let result2 = basicOperation('-', 5, 10); 
+let result3 = basicOperation('*', 5, 10); 
+let result4 = basicOperation('/', 5, 10);   
+
+console.log(result1);
+console.log(result2);
+console.log(result3);
+console.log(result4);
+
+console.log("Задание 2");
+function sumCubes(n) {
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+        sum += i ** 3;  
+    }
+    return sum;
+}
+
+console.log(sumCubes(5)); 
+
+console.log("Задание 3");
+function average(arr) {
+    let sum = 0;
+    for (let num of arr) {
+        sum += num;  
+    }
+    return sum / arr.length ;  
+}
+
+console.log(average([1, 2, 3, 4, 5, 6])); 
+
+console.log("Задание 4");
+
+function reverseAndFilter(str) {
+    return str.split('').reverse().filter(char => /[a-zA-Z]/.test(char)).join('');
+}
+
+console.log(reverseAndFilter("JavaScript"));      
+console.log(reverseAndFilter("JavaScr53э? ipt")); 
+
+console.log("Задание 5");
+
+function repeatString(n, s) {
+    return s.repeat(n);
+}
+
+console.log(repeatString(3, 'abc')); 
+console.log(repeatString(5, 'x'));    
+
+
+console.log("Задание 6");
+
+function difference(arr1, arr2) {
+  return arr1.filter(item => !arr2.includes(item));
+}
+
+// Пример использования:
+const arr1 = ["apple", "banana", "cherry"];
+const arr2 = ["banana", "date"];
+
+const arr3 = difference(arr1, arr2);
+console.log(arr3); 
+
+</script>
+</body>
+</html>

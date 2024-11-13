@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+console.log("Задание 1")
+
+      
+
+const products = new Set();
+
+
+function addProduct(product) {
+    if (products.has(product)) {
+        console.log(`${product} уже есть в списке.`);
+    } else {
+        products.add(product);
+        console.log(`${product} добавлен в список.`);
+    }
+}
+
+
+function removeProduct(product) {
+    if (products.has(product)) {
+        products.delete(product);
+        console.log(`${product} удален из списка.`);
+    } else {
+        console.log(`${product} нет в списке.`);
+    }
+}
+
+
+function checkProduct(product) {
+    if (products.has(product)) {
+        console.log(`${product} присутствует в списке.`);
+        return true;
+    } else {
+        console.log(`${product} отсутствует в списке.`);
+        return false;
+    }
+}
+
+
+function countProducts() {
+    console.log(`Количество товаров в списке: ${products.size}`);
+    return products.size;
+}
+
+
+addProduct("Яблоки");
+addProduct("Бананы");
+addProduct("Яблоки");  
+checkProduct("Бананы");
+removeProduct("Яблоки");
+countProducts();
+removeProduct("Яблоки"); 
+
+
+
+
+console.log("Задание 2")
+
+const students = new Set();
+
+
+function addStudent(student) {
+    if (students.has(student)) {
+        console.log(`Студент ${student.name} уже есть в списке.`);
+    } else {
+        students.add(student);
+        console.log(`Студент ${student.name} добавлен в список.`);
+    }
+}
+
+
+function removeStudentById(id) {
+    for (let student of students) {
+        if (student.id === id) {
+            students.delete(student);
+            console.log(`Студент ${id} удален из списка.`);
+            return;
+        }
+    }
+    console.log(`Студент ${id} не найден.`);
+}
+
+
+function filterByGroup(group) {
+    const filteredStudents = [...students].filter(student => student.group == group);
+    console.log(`Студенты из группы ${group}:`, filteredStudents);
+    return filteredStudents;
+}
+
+
+function sortById() {
+    const sortedStudents = [...students].sort((a, b) => a.id - b.id);
+    console.log("Список студентов, отсортированный по номеру зачетки:", sortedStudents);
+    return sortedStudents;
+}
+
+
+const student3 = { id: 54321, group: "2", name: "Сидоров Сидор Сидорович" };
+const student1 = { id: 12345, group: "1", name: "Иванов Иван Иванович" };
+const student2 = { id: 67890, group: "1", name: "Петров Петр Петрович" };
+
+
+// Тестирование функций
+addStudent(student1);
+addStudent(student2);
+addStudent(student3);
+
+filterByGroup("2");
+sortById();
+
+removeStudentById(12345);
+sortById();
+</script>
+<script>
+    console.log('Задание 3')
+       
+
+    const cart = new Map();
+
+
+function addProduct(id, name, quantity, price) {
+    if (cart.has(id)) {
+        console.log(`Товар id ${id} уже есть в корзине.`);
+    } else {
+        cart.set(id, { name, quantity, price });
+        console.log(`Товар "${name}" добавлен в корзину.`);
+    }
+}
+
+
+function removeProductById(id) {
+    if (cart.has(id)) {
+        cart.delete(id);
+        console.log(`Товар id ${id} удален из корзины.`);
+    } else {
+        console.log(`Товар id ${id} не найден.`);
+    }
+}
+
+// Функция для удаления товаров по названию
+function removeProductsByName(name) {
+    const idsToRemove = [];
+    for (let [id, product] of cart.entries()) {
+        if (product.name === name) {
+            idsToRemove.push(id);
+        }
+    }
+    idsToRemove.forEach(id => {
+        cart.delete(id);
+        console.log(`Товар "${name}"  id ${id} удален из корзины.`);
+    });
+}
+
+
+function updateQuantity(id, quantity) {
+    if (cart.has(id)) {
+        const product = cart.get(id);
+        product.quantity = quantity;
+        console.log(`Количество товара id ${id} обновлено до ${quantity}.`);
+    } else {
+        console.log(`Товар id ${id} не найден.`);
+    }
+}
+
+
+function updatePrice(id, price) {
+    if (cart.has(id)) {
+        const product = cart.get(id);
+        product.price = price;
+        console.log(`Цена товара id ${id} обновлена до ${price}.`);
+    } else {
+        console.log(`Товар id ${id} не найден.`);
+    }
+}
+
+
+function countItems() {
+    console.log(`Количество позиций в корзине: ${cart.size}`);
+    return cart.size;
+}
+
+
+function calculateTotalPrice() {
+    let totalPrice = 0;
+    for (let product of cart.values()) {
+        totalPrice += product.price * product.quantity;
+    }
+    console.log(`Общая стоимость товаров в корзине: ${totalPrice}`);
+    return totalPrice;
+}
+
+// Пример использования
+addProduct(1, "Яблоки", 3, 50);
+addProduct(2, "Бананы", 5, 30);
+addProduct(4, "Бананы", 5, 30);
+addProduct(3, "Яблоки", 2, 50);  
+removeProductById(2);
+removeProductsByName("Яблоки");
+for (let product of cart.values()) 
+console.log(product);
+addProduct(4, "Груши", 7, 40);
+updateQuantity(4, 10);
+updatePrice(4, 45);
+
+countItems();
+calculateTotalPrice();
+
+    
+
+
+console.log("Задание 4")
+
+
+const cache = new WeakMap();
+
+
+function expensiveFunction(args) {
+    if (cache.has(args)) {
+        console.log("Результат из кеша:");
+        return cache.get(args);
+    } else {
+        
+        const result = args.a + args.b;
+        
+        
+        cache.set(args, result);
+        console.log("Результат вычислен и добавлен в кеш:");
+        return result;
+    }
+}
+
+// Пример использования
+const params1 = { a: 5, b: 10 };
+const params2 = { a: 3, b: 7 };
+
+console.log(expensiveFunction(params1)); 
+console.log(expensiveFunction(params2)); 
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("Задание 1"); 
+        titles=["первый", "второй","третий"]
+      const [x] = titles;
+        console.log( x ); 
+    
+
+        console.log("Задание 2"); 
+      const user={name:'Marina', age:19};
+      const admin={admin:'admin',...user};
+      console.log(admin);
+
+
+      console.log("Задание 3"); 
+      let store={
+        state:{//первый уровень
+            profilePage:{//второй уровень
+                posts:[//третий уровень
+                    {id:1, messege:'Hi', likesCount:12},
+                    {id:2, messege:'By', likesCount:1},
+                ],
+                newPostText:'About me',
+                
+            },
+            dialogsPage:{
+                dialogs:[
+                    {id:1, name:'Valera'},
+                    {id:2, name:'Andrey'},
+                    {id:3, name:'Sasha'},
+                    {id:4, name:'Victor'},
+                ],
+                messeges:[
+                    {id:1, messege:'hi'},
+                    {id:2, messege:'hi hi'},
+                    {id:3, messege:'hi hi hi'},
+
+
+                ],
+            },
+            sidebar:[],
+        },
+      }
+const { state: { profilePage, dialogsPage, sidebar } } = store;
+const { posts, newPostText } = profilePage ;
+const { dialogs, messeges } = dialogsPage ;
+
+const likesCounts = [];
+for (const post of posts) {
+    likesCounts.push(post.likesCount);
+}
+console.log("Likes Count:", likesCounts);
+// 2. Фильтрация массива dialogs
+const evenIdDialogs = dialogs.filter(({ id }) => id % 2 === 0);
+console.log("Dialogs with even IDs:", evenIdDialogs); 
+
+// 3. Замена всех сообщений в массиве messages на "Hello user" 
+const updatedMessages = messeges.map(message => message.messege = 'Hello user');
+console.log("Updated Messages:", updatedMessages); 
+
+console.log("Задание 4"); 
+
+let tasks = [
+    { id: 1, title: "HTML&CSS", isDone: true },
+    { id: 2, title: "JS", isDone: true },
+    { id: 3, title: "ReactJS", isDone: false },
+    { id: 4, title: "Rest API", isDone: false },
+    { id: 5, title: "GraphQL", isDone: false },
+];
+
+// Создаем новую задачу
+const newTask = { id: 6, title: "NodeJS", isDone: false };
+
+
+tasks = [...tasks, newTask];
+
+console.log(tasks);
+
+console.log("Задание 5"); 
+
+
+function sumValues(x, y, z) {
+    return x + y + z;
+}
+
+const values = [1, 2, 3];
+const result = sumValues(...values);
+
+console.log(result); 
+
+    </script>
+      
+</body>
+</html>
